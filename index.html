@@ -9,28 +9,95 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             text-align: center;
-            padding: 50px;
+            /* Adjusted padding to account for fixed navbar */
+            padding-top: 100px; /* Increased from 50px to make space for navbar */
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 50px;
+            margin: 0; /* Remove default body margin */
         }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333; /* Dark background for navbar */
+            overflow: hidden; /* Clear floats or contain elements */
+            position: fixed; /* Make it stick to the top */
+            top: 0;
+            width: 100%;
+            left: 0; /* Ensure it spans full width */
+            z-index: 1000; /* Make sure it's above other content */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center the nav items */
+        }
+
+        .navbar li {
+            display: inline-block; /* Arrange items horizontally */
+        }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .navbar li a:hover {
+            background-color: #555; /* Darker shade on hover */
+            color: #ddd;
+        }
+        /* End Navbar styles */
+
         h1 {
             color: #333;
+            margin-top: 20px; /* Add some margin if needed below navbar */
         }
         img {
             width: 400px;
+            max-width: 90%; /* Make image responsive */
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-top: 20px;
         }
         p {
             font-size: 1.2em;
             color: #666;
+            line-height: 1.6;
+        }
+        a { /* General link styling, can be more specific if needed */
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="index_1.html">NGINX Page</a></li>
+        </ul>
+    </nav>
+
     <h1>Welcome to <a href="index_1.html">NGINX</a> Web Server - Ondia Academy</h1>
-    <img src="gunes.jpg" alt="">
+    <img src="gunes.jpg" alt="Sun - Ondia Academy"> <!-- Added more descriptive alt text -->
     <p>This is a simple HTML page served by NGINX.</p>
     <p>Feel free to explore and learn more about web servers!</p>
     <p>Powered by <a href="https://www.nginx.com/">NGINX</a></p>
+
 </body>
 </html>
-
