@@ -3,30 +3,63 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nginx </title>
+<title>Nginx Practice Page</title>
 <style>
   body {
     font-family: Arial, sans-serif;
-    margin: 40px;
+    margin: 0; /* Changed margin to 0 for body, header will handle top space */
+    padding-top: 0; /* Ensure no default padding at top */
     background: #f0f0f0;
     color: #333;
   }
   header {
     background: #1cc3c9;
     color: white;
-    padding: 20px;
+    padding: 20px 20px 10px 20px; /* Adjusted padding slightly */
     text-align: center;
-    border-radius: 8px;
+    /* border-radius: 8px; Removed bottom radius if nav is part of it or looks better flat */
   }
+  header h1 {
+    margin-top: 0; /* Remove default h1 margin if needed */
+    margin-bottom: 15px; /* Space between H1 and Nav */
+  }
+
+  /* Navigation Bar Styles */
+  nav {
+    padding-bottom: 10px; /* Space below nav links */
+  }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  }
+  nav ul li {
+    margin: 5px 15px; /* Spacing between nav items, added vertical margin for wrapping */
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus { /* Added focus for accessibility */
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+    outline: none; /* Remove default focus outline if custom style is enough */
+  }
+
   main {
-    margin-top: 30px;
+    margin: 30px auto; /* Centered main content */
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
   }
   /* Slider styles */
   .slider {
@@ -38,12 +71,13 @@
   }
   .slides {
     display: flex;
-    width: 300%;
+    /* width: 300%; Corrected width calculation in JS based on actual children */
     height: 100%;
     transition: transform 0.5s ease-in-out;
   }
   .slides img {
-    width: 100%;
+    min-width: 100%; /* Each slide takes full width of the container */
+    width: 100%; /* Ensure it strictly adheres to 100% of its flex item container */
     height: 100%;
     object-fit: contain;
     border-radius: 8px;
@@ -79,17 +113,35 @@
   .arrow-right {
     right: 10px;
   }
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #ddd; /* Added a light background to footer */
+    color: #333;
+    margin-top: 30px;
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>Welcome to My Nginx Practice Page</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about-nginx">About</a></li>
+      <li><a href="#slider-section">Slider</a></li>
+      <li><a href="#contact-footer">Contact</a></li>
+      <li><a href="index.html">index.html</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-  <p>This is a simple static webpage served by Nginx. You can use this to practice configuring your Nginx server.</p>
-  <p>Try editing this page and reload it in your browser to see your changes.</p>
+  <div id="about-nginx">
+    <p>This is a simple static webpage served by Nginx. You can use this to practice configuring your Nginx server.</p>
+    <p>Try editing this page and reload it in your browser to see your changes.</p>
+  </div>
 
-  <h2>Nginx Image Slider</h2>
+  <h2 id="slider-section">Nginx Image Slider</h2>
   <div class="slider">
     <div class="slides" id="slides">
       <!-- Nginx logo -->
@@ -99,20 +151,29 @@
       <!-- Nginx welcome page screenshot -->
       <img src="https://www.nginx.com/wp-content/uploads/2019/07/nginx-welcome.png" alt="Nginx Welcome Page" />
     </div>
-    <div class="arrow arrow-left" onclick="prevSlide()">&#10094;</div>
-    <div class="arrow arrow-right" onclick="nextSlide()">&#10095;</div>
+    <div class="arrow arrow-left" onclick="prevSlide()">❮</div>
+    <div class="arrow arrow-right" onclick="nextSlide()">❯</div>
   </div>
 </main>
-<footer>
-  &copy; 2025 Ismail. All rights reserved.
+<footer id="contact-footer">
+  © 2025 Ismail. All rights reserved.
 </footer>
 
 <script>
-  const slides = document.getElementById('slides');
-  const totalSlides = slides.children.length;
+  const slidesContainer = document.getElementById('slides');
+  const slides = slidesContainer.children; // Get actual image elements
+  const totalSlides = slides.length;
   let currentIndex = 0;
 
+  // Set the width of the .slides container dynamically
+  if (totalSlides > 0) {
+    slidesContainer.style.width = `${totalSlides * 100}%`;
+  }
+
+
   function showSlide(index) {
+    if (totalSlides === 0) return; // Don't do anything if no slides
+
     if (index < 0) {
       currentIndex = totalSlides - 1;
     } else if (index >= totalSlides) {
@@ -120,7 +181,11 @@
     } else {
       currentIndex = index;
     }
-    slides.style.transform = `translateX(${-currentIndex * (100 / totalSlides)}%)`;
+    // The transform percentage should be based on a single slide taking 100% of the viewport
+    // and we have totalSlides number of slides.
+    // So each slide is 100/totalSlides % of the slidesContainer width.
+    // To move to slide `currentIndex`, we translate by -currentIndex * (width of one slide as % of slidesContainer)
+    slidesContainer.style.transform = `translateX(${-currentIndex * (100 / totalSlides)}%)`;
   }
 
   function nextSlide() {
@@ -130,9 +195,16 @@
   function prevSlide() {
     showSlide(currentIndex - 1);
   }
+  
+  // Initialize slider
+  if (totalSlides > 0) {
+    showSlide(currentIndex); // Show the first slide initially
+  }
 
   setInterval(() => {
-    nextSlide();
+    if (totalSlides > 0) { // Only run interval if slides exist
+        nextSlide();
+    }
   }, 5000);
 </script>
 </body>
