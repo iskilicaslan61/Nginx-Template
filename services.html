@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Ondia Academy NGINX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* Adjusted padding to account for fixed navbar */
+            padding-top: 100px; /* Space for navbar */
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            margin: 0; /* Remove default body margin */
+            color: #333;
+        }
+
+        /* Navbar styles - Same as index.html for consistency */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navbar li {
+            display: inline-block;
+        }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .navbar li a:hover, .navbar li a.active { /* Style for hover and active link */
+            background-color: #555;
+            color: #fff;
+        }
+        /* End Navbar styles */
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto; /* Centering content and adding space below navbar */
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: left; /* Override body's center alignment for content */
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center; /* Center main headings */
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #007bff; /* A slightly different color for subheadings */
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        ul.service-list {
+            list-style-type: disc; /* Or 'square', 'circle' */
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        ul.service-list li {
+            margin-bottom: 10px;
+        }
+
+        .service-item {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .service-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+
+        .contact-cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        .contact-cta p {
+            margin-bottom: 15px;
+        }
+
+        .contact-cta a.button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-cta a.button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            
+            <li><a href="#about">About Us</a></li>
+            <li><a href="services.html" class="active">Services</a></li> <!-- 'active' class added -->
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="index_1.html">NGINX Page</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Our NGINX Services at Ondia Academy</h1>
+        <p>At Ondia Academy, we specialize in providing comprehensive NGINX solutions. Whether you're looking to optimize your current setup, implement new features, or require expert consultation, our team is here to help you leverage the full power of NGINX.</p>
+
+        <div class="service-item">
+            <h3>NGINX Configuration & Setup</h3>
+            <p>We offer professional NGINX installation and configuration services tailored to your specific needs. This includes setting up server blocks (virtual hosts), SSL/TLS termination, and basic optimizations for new or existing web applications.</p>
+        </div>
+
+        <div class="service-item">
+            <h3>Performance Optimization</h3>
+            <p>Maximize your website's speed and efficiency with our NGINX performance tuning services. We analyze your setup and implement best practices for caching, compression, connection handling, and content delivery to ensure optimal performance.</p>
+        </div>
+
+        <div class="service-item">
+            <h3>Security Hardening</h3>
+            <p>Protect your web infrastructure with NGINX security hardening. Our services include implementing security headers, rate limiting, access controls, Web Application Firewall (WAF) integration (e.g., ModSecurity), and mitigation against common web vulnerabilities.</p>
+        </div>
+
+        <div class="service-item">
+            <h3>Load Balancing & High Availability</h3>
+            <p>Ensure your applications are resilient and can handle high traffic loads. We design and implement robust NGINX load balancing solutions (HTTP, TCP/UDP) and high availability setups to distribute traffic efficiently and prevent single points of failure.</p>
+        </div>
+
+        <div class="service-item">
+            <h3>NGINX Training & Workshops</h3>
+            <p>Empower your team with the knowledge to manage and optimize NGINX effectively. We provide customized training sessions and workshops covering everything from NGINX fundamentals to advanced topics and best practices.</p>
+        </div>
+
+        <div class="service-item">
+            <h3>Reverse Proxy & API Gateway Solutions</h3>
+            <p>Utilize NGINX as a powerful reverse proxy for your microservices, legacy applications, or as an API gateway. We can help you configure routing, request/response manipulation, authentication, and more.</p>
+        </div>
+
+        <div class="contact-cta">
+            <h2>Ready to enhance your web infrastructure?</h2>
+            <p>Get in touch with us today for a consultation or to learn more about how our NGINX services can benefit your business.</p>
+            <a href="#contact" class="button">Contact Us Now</a>
+            <!-- You might want to change #contact to an actual contact page or mailto link -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Ondia Academy - NGINX Solutions. All rights reserved.</p>
+        <p>Powered by <a href="https://www.nginx.com/">NGINX</a></p>
+    </footer>
+
+</body>
+</html>
